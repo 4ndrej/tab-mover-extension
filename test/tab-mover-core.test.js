@@ -14,22 +14,12 @@ test('groupIdToValue/parseGroupIdValue: round-trip medzi cislom a hodnotou <sele
 
 test('formatGroupLabel: pouzije title grupy', () => {
   const group = { id: 1, windowId: 10, title: 'Prace', color: 'blue' };
-  assert.strictEqual(core.formatGroupLabel(group, 10), 'Prace');
+  assert.strictEqual(core.formatGroupLabel(group), 'Prace');
 });
 
 test('formatGroupLabel: bez title vrati nahradny nazov', () => {
   const group = { id: 1, windowId: 10, title: '', color: 'blue' };
-  assert.strictEqual(core.formatGroupLabel(group, 10), '(bez nazvu)');
-});
-
-test('formatGroupLabel: grupa v inom okne ma indikator', () => {
-  const group = { id: 1, windowId: 99, title: 'Prace', color: 'blue' };
-  assert.strictEqual(core.formatGroupLabel(group, 10), 'Prace - ine okno');
-});
-
-test('formatGroupLabel: grupa v aktualnom okne nema indikator', () => {
-  const group = { id: 1, windowId: 10, title: 'Prace', color: 'blue' };
-  assert.strictEqual(core.formatGroupLabel(group, 10), 'Prace');
+  assert.strictEqual(core.formatGroupLabel(group), '(bez nazvu)');
 });
 
 test('sortGroupsByTitle: zotriedi grupy abecedne podla nazvu', () => {

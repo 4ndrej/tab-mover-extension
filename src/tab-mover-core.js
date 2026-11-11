@@ -32,13 +32,9 @@
     return group.title && group.title.trim() ? group.title.trim() : '(bez nazvu)';
   }
 
-  /** Popisok grupy do comba: nazov (alebo nahradny text) + indikator ineho okna. */
-  function formatGroupLabel(group, currentWindowId) {
-    var title = effectiveTitle(group);
-    if (group.windowId !== currentWindowId) {
-      return title + ' - ine okno';
-    }
-    return title;
+  /** Popisok grupy do comba: nazov grupy (alebo nahradny text, ak nema title). */
+  function formatGroupLabel(group) {
+    return effectiveTitle(group);
   }
 
   /** Grupy zotriedene abecedne podla nazvu (sk lokalizacia, bez ohladu na velkost pismen). */

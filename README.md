@@ -14,9 +14,9 @@ oknami.
 
 1. Oznac taby, ktore chces presunut (alebo necha len jeden aktivny tab).
 2. Klikni na ikonu rozsirenia.
-3. V comba boxe vyber cielovu grupu (zoznam vsetkych grup zo vsetkych okien;
-   grupy mimo aktualneho okna su oznacene "- ine okno"). Ak uz niekedy bola
-   pouzita nejaka grupa a stale existuje, je predvybrana.
+3. V comba boxe vyber cielovu grupu (abecedne zoradeny zoznam vsetkych grup
+   zo vsetkych okien). Ak uz niekedy bola pouzita nejaka grupa a stale
+   existuje, je predvybrana.
 4. Klikni **Presun**.
 
 Ak je cielova grupa v inom okne, taby sa do neho najprv presunu a az potom

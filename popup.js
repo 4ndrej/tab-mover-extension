@@ -21,7 +21,7 @@ async function highlightedTabs() {
   return chrome.tabs.query({ highlighted: true, currentWindow: true });
 }
 
-function renderGroups(groups, currentWindowId, selectedGroupId) {
+function renderGroups(groups, selectedGroupId) {
   selectEl.innerHTML = '';
 
   const placeholder = document.createElement('option');
@@ -32,7 +32,7 @@ function renderGroups(groups, currentWindowId, selectedGroupId) {
   for (const group of groups) {
     const option = document.createElement('option');
     option.value = core.groupIdToValue(group.id);
-    option.textContent = core.formatGroupLabel(group, currentWindowId);
+    option.textContent = core.formatGroupLabel(group);
     selectEl.appendChild(option);
   }
 
@@ -41,14 +41,11 @@ function renderGroups(groups, currentWindowId, selectedGroupId) {
 }
 
 async function init() {
-  const tabs = await highlightedTabs();
-  const currentWindowId = tabs[0] ? tabs[0].windowId : chrome.windows.WINDOW_ID_NONE;
-
   const groups = core.sortGroupsByTitle(await chrome.tabGroups.query({}));
   const stored = await chrome.storage.local.get(STORAGE_KEY);
   const defaultGroupId = core.selectDefaultGroupId(groups, stored[STORAGE_KEY] ?? null);
 
-  renderGroups(groups, currentWindowId, defaultGroupId);
+  renderGroups(groups, defaultGroupId);
   updateMoveButtonState();
 
   if (groups.length === 0) {
@@ -86,7 +83,7 @@ async function runMove(groups) {
   const skippedNote = plan.skippedPinnedCount > 0
     ? ` (${plan.skippedPinnedCount} pripnutych tabov preskocenych)`
     : '';
-  setStatus(`Presunutych ${plan.tabIds.length} tabov do grupy "${core.formatGroupLabel(targetGroup, targetGroup.windowId)}"${skippedNote}.`);
+  setStatus(`Presunutych ${plan.tabIds.length} tabov do grupy "${core.formatGroupLabel(targetGroup)}"${skippedNote}.`);
 }
 
 /** Obali akciu o blokovanie tlacidla a hlasenie chyb. */
