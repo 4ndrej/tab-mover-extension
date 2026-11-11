@@ -1,10 +1,11 @@
 {
   "name": "tab-mover-extension",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "description": "Chrome rozsirenie na presun aktivneho/oznacenych tabov do zvolenej grupy tabov",
   "scripts": {
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "package": "scripts/package.sh"
   },
   "devDependencies": {
     "jsdom": "^25.0.1"

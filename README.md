@@ -38,3 +38,12 @@ Pripnute (pinned) taby sa z presunu automaticky vynechaju.
 npm install
 npm test
 ```
+
+## Release balicek (zip)
+
+```sh
+npm run package
+```
+
+Vytvori `dist/tab-mover-extension-v<verzia>.zip` - len subory potrebne na
+nacitanie v Chrome (bez `test/`, `node_modules/`).
