@@ -1,0 +1,70 @@
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  width: 280px;
+  margin: 0;
+  padding: 12px;
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 7px 8px;
+  font: inherit;
+  border: 1px solid #8884;
+  border-radius: 6px;
+  background: Canvas;
+  color: CanvasText;
+}
+
+button {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 10px;
+  padding: 7px 12px;
+  font: inherit;
+  font-weight: 600;
+  border: 1px solid #8884;
+  border-radius: 6px;
+  background: Canvas;
+  color: CanvasText;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #8882;
+}
+
+button.primary {
+  border-color: #06c;
+  background: #06c;
+  color: #fff;
+}
+
+button.primary:hover:not(:disabled) {
+  background: #058;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.status {
+  min-height: 1.45em;
+  margin: 10px 0 0;
+  color: #777;
+}
+
+.status.error {
+  color: #c00;
+}
