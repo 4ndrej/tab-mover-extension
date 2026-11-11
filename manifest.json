@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Tab Mover",
-  "version": "0.1.3",
+  "version": "0.1.4",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAotJFdg7gOtanobWhWYmRnItI0ZDxUKKeIevZiFD4xkD9t/+66VsKbNwRbYLeVq8gVeQxZ60Pn7PidC159qIPAeRobsvybejCUIUYL0EQYYiAzWZPQR5v5qALhyclzFH7YFcelGDBEvbq+8mlUzGPv79tIgh7AzNmZzlQacTkQg9mWi/Fr40aOpp89DRFRzF5kTgz027J/xonDuAfo158aCtyHR/WNSuxrvHw/6nnb+TpmYiGXvnZa7+QNNOGBCPeG5iMHI56L6lDq5uIH9oTZY3B1ofyz/o3JssmuxLs7HfmPNf1600eQd/leIKWxa0abTCXcWIHyCZBzNcHvY8lUQIDAQAB",
   "description": "Presunie aktivny alebo oznacene taby do zvolenej grupy tabov.",
   "permissions": ["tabs", "tabGroups", "storage"],
   "action": {
