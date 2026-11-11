@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Tab Mover",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Presunie aktivny alebo oznacene taby do zvolenej grupy tabov.",
   "permissions": ["tabs", "tabGroups", "storage"],
   "action": {
