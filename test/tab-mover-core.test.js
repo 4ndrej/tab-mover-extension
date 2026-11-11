@@ -32,6 +32,42 @@ test('formatGroupLabel: grupa v aktualnom okne nema indikator', () => {
   assert.strictEqual(core.formatGroupLabel(group, 10), 'Prace');
 });
 
+test('sortGroupsByTitle: zotriedi grupy abecedne podla nazvu', () => {
+  const groups = [
+    { id: 1, title: 'Osobne' },
+    { id: 2, title: 'Alfa' },
+    { id: 3, title: 'cesta' },
+  ];
+  const sorted = core.sortGroupsByTitle(groups).map((g) => g.id);
+  assert.deepStrictEqual(sorted, [2, 3, 1]);
+});
+
+test('sortGroupsByTitle: netrieda case-sensitive', () => {
+  const groups = [
+    { id: 1, title: 'bety' },
+    { id: 2, title: 'Alfa' },
+  ];
+  const sorted = core.sortGroupsByTitle(groups).map((g) => g.id);
+  assert.deepStrictEqual(sorted, [2, 1]);
+});
+
+test('sortGroupsByTitle: grupy bez nazvu sa triedia ako "(bez nazvu)"', () => {
+  const groups = [
+    { id: 1, title: 'Zebra' },
+    { id: 2, title: '' },
+    { id: 3, title: 'Alfa' },
+  ];
+  const sorted = core.sortGroupsByTitle(groups).map((g) => g.id);
+  assert.deepStrictEqual(sorted, [2, 3, 1]);
+});
+
+test('sortGroupsByTitle: nemutuje povodne pole', () => {
+  const groups = [{ id: 1, title: 'B' }, { id: 2, title: 'A' }];
+  const copy = groups.slice();
+  core.sortGroupsByTitle(groups);
+  assert.deepStrictEqual(groups, copy);
+});
+
 test('selectDefaultGroupId: vrati naposledy pouzitu grupu, ak este existuje', () => {
   const groups = [{ id: 1 }, { id: 2 }, { id: 3 }];
   assert.strictEqual(core.selectDefaultGroupId(groups, 2), 2);

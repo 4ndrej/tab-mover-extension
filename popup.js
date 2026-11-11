@@ -44,7 +44,7 @@ async function init() {
   const tabs = await highlightedTabs();
   const currentWindowId = tabs[0] ? tabs[0].windowId : chrome.windows.WINDOW_ID_NONE;
 
-  const groups = await chrome.tabGroups.query({});
+  const groups = core.sortGroupsByTitle(await chrome.tabGroups.query({}));
   const stored = await chrome.storage.local.get(STORAGE_KEY);
   const defaultGroupId = core.selectDefaultGroupId(groups, stored[STORAGE_KEY] ?? null);
 

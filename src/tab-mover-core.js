@@ -27,13 +27,25 @@
     return id === null || id === undefined ? PLACEHOLDER_VALUE : String(id);
   }
 
+  /** Nazov grupy na zobrazenie/triedenie, s nahradnym textom pre prazdny title. */
+  function effectiveTitle(group) {
+    return group.title && group.title.trim() ? group.title.trim() : '(bez nazvu)';
+  }
+
   /** Popisok grupy do comba: nazov (alebo nahradny text) + indikator ineho okna. */
   function formatGroupLabel(group, currentWindowId) {
-    var title = group.title && group.title.trim() ? group.title.trim() : '(bez nazvu)';
+    var title = effectiveTitle(group);
     if (group.windowId !== currentWindowId) {
       return title + ' - ine okno';
     }
     return title;
+  }
+
+  /** Grupy zotriedene abecedne podla nazvu (sk lokalizacia, bez ohladu na velkost pismen). */
+  function sortGroupsByTitle(groups) {
+    return groups.slice().sort(function (a, b) {
+      return effectiveTitle(a).localeCompare(effectiveTitle(b), 'sk', { sensitivity: 'base' });
+    });
   }
 
   /**
@@ -71,6 +83,7 @@
     parseGroupIdValue: parseGroupIdValue,
     groupIdToValue: groupIdToValue,
     formatGroupLabel: formatGroupLabel,
+    sortGroupsByTitle: sortGroupsByTitle,
     selectDefaultGroupId: selectDefaultGroupId,
     buildMovePlan: buildMovePlan,
   };
