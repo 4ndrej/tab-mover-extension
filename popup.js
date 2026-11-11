@@ -74,11 +74,14 @@ async function runMove(groups) {
     return;
   }
 
+  // Ulozit pred samotnym presunom: presun do ineho okna prepne fokus a popup
+  // sa zavrie skor, nez by neskorsi await na storage.set stihol dobehnut.
+  await chrome.storage.local.set({ [STORAGE_KEY]: targetGroup.id });
+
   if (plan.crossWindowTabIds.length > 0) {
     await chrome.tabs.move(plan.crossWindowTabIds, { windowId: targetGroup.windowId, index: -1 });
   }
   await chrome.tabs.group({ tabIds: plan.tabIds, groupId: targetGroup.id });
-  await chrome.storage.local.set({ [STORAGE_KEY]: targetGroup.id });
 
   const skippedNote = plan.skippedPinnedCount > 0
     ? ` (${plan.skippedPinnedCount} pripnutych tabov preskocenych)`
